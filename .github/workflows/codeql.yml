@@ -20,8 +20,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'python' ]
-              - name: Set up Python
+        language: [ 'python' ]   # Change to 'javascript', 'java', etc. if needed
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -34,11 +39,6 @@ jobs:
       - name: Run tests
         run: |
           python -m unittest discover
-# Change to 'javascript', 'java', etc. if needed
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
@@ -47,3 +47,4 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
+
