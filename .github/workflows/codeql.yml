@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'python' ]   # Change to 'javascript', 'java', etc. if needed
+        language: [ 'python' ]  
 
     steps:
       - name: Checkout repository
@@ -36,7 +36,7 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run tests
+      - name: Run Python Tests
         run: |
           python -m unittest discover
 
